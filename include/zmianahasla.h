@@ -15,7 +15,9 @@ public:
     ~ZmianaHasla();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_zmienHasloButton_clicked();
+
+    void on_powrotButton_clicked();
 
 private:
     Ui::ZmianaHasla *ui;

@@ -15,7 +15,7 @@ Rejestracja::~Rejestracja()
     delete ui;
 }
 
-void Rejestracja::on_pushButton_clicked()
+void Rejestracja::on_zarejestrujButton_clicked()
 {
     QString login = ui->loginText->text();
     QString haslo = ui->hasloText->text();

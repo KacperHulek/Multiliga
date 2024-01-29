@@ -17,7 +17,7 @@ public:
     ~Rejestracja();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_zarejestrujButton_clicked();
 
 private:
     Ui::Rejestracja *ui;

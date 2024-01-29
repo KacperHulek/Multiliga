@@ -15,17 +15,13 @@ public:
     ~AktualizujWyniki();
 
 private slots:
-    void on_listView_indexesMoved(const QModelIndexList &indexes);
+    void on_dalejButton_clicked();
 
-    void on_listView_activated(const QModelIndex &index);
+    void on_powrotButton_clicked();
 
-    void on_listView_2_clicked(const QModelIndex &index);
+    void on_listaLigView_clicked(const QModelIndex &index);
 
-    void on_listView_clicked(const QModelIndex &index);
-
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
+    void on_listaKolejekView_clicked(const QModelIndex &index);
 
 private:
     Ui::AktualizujWyniki *ui;

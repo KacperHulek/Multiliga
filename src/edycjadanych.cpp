@@ -16,15 +16,21 @@ EdycjaDanych::~EdycjaDanych()
     delete ui;
 }
 
-//zmiana loginu
-void EdycjaDanych::on_pushButton_clicked()
+void EdycjaDanych::on_zmienLoginButton_clicked()
 {
     ZmianaLoginu *okno = new ZmianaLoginu(nullptr, mo->getCurrentUserID());
     okno->show();
 }
 
 
-void EdycjaDanych::on_pushButton_3_clicked()
+void EdycjaDanych::on_zmienHasloButton_clicked()
+{
+    ZmianaHasla *okno = new ZmianaHasla(nullptr,mo->getCurrentUserID());
+    okno->show();
+}
+
+
+void EdycjaDanych::on_usunKontoButton_clicked()
 {
     int result = QMessageBox::question(nullptr, "Usuwanie konta", "Czy napewno usunac konto? Ta akcja jest nieodwracalna",
                                        QMessageBox::Yes | QMessageBox::No);
@@ -43,19 +49,12 @@ void EdycjaDanych::on_pushButton_3_clicked()
             QMessageBox::information(nullptr, "Blad", "Blad podczas usuwania konta!");
         }
     } else {
-        close();
+
     }
 }
 
 
-void EdycjaDanych::on_pushButton_2_clicked()
-{
-    ZmianaHasla *okno = new ZmianaHasla(nullptr,mo->getCurrentUserID());
-    okno->show();
-}
-
-
-void EdycjaDanych::on_pushButton_4_clicked()
+void EdycjaDanych::on_zamknijButton_clicked()
 {
     close();
 }

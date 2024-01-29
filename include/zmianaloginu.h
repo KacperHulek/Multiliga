@@ -16,7 +16,9 @@ public:
     ~ZmianaLoginu();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_zmienLoginButton_clicked();
+
+    void on_powrotButton_clicked();
 
 private:
     Ui::ZmianaLoginu *ui;

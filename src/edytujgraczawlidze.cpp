@@ -19,28 +19,8 @@ EdytujGraczaWLidze::~EdytujGraczaWLidze()
     delete ui;
 }
 
-void EdytujGraczaWLidze::on_pushButton_2_clicked()
+void EdytujGraczaWLidze::on_zatwierdzButton_clicked()
 {
-    //usun gracza
-    int result = QMessageBox::question(nullptr, "Usuwanie gracza", "Czy napewno usunac gracza? Ta akcja jest nieodwracalna",
-                                       QMessageBox::Yes | QMessageBox::No);
-
-    if (result == QMessageBox::Yes) {
-        QSqlQuery query;
-        query.prepare("UPDATE Players SET [queueID] = :newQueueID WHERE [ID] = :playerID");
-        query.bindValue(":newQueueID",QVariant());
-        query.bindValue(":playerID",el->getPlayerID());
-        if(query.exec()){
-            el->updateStuff();
-            close();
-        }
-    }
-}
-
-
-void EdytujGraczaWLidze::on_pushButton_clicked()
-{
-    //zatwierdz
     QSqlQuery queryPoziom;
     queryPoziom.prepare("UPDATE Players SET [level] = :newLevel WHERE [ID] = :playerID");
     queryPoziom.bindValue(":newLevel",ui->spinBox->value());
@@ -81,12 +61,28 @@ void EdytujGraczaWLidze::on_pushButton_clicked()
     }else{
         qDebug()<<queryZaplata.lastError();
     }
-
-
 }
 
 
-void EdytujGraczaWLidze::on_pushButton_3_clicked()
+void EdytujGraczaWLidze::on_usunGraczaButton_clicked()
+{
+    int result = QMessageBox::question(nullptr, "Usuwanie gracza", "Czy napewno usunac gracza? Ta akcja jest nieodwracalna",
+                                       QMessageBox::Yes | QMessageBox::No);
+
+    if (result == QMessageBox::Yes) {
+        QSqlQuery query;
+        query.prepare("UPDATE Players SET [queueID] = :newQueueID WHERE [ID] = :playerID");
+        query.bindValue(":newQueueID",QVariant());
+        query.bindValue(":playerID",el->getPlayerID());
+        if(query.exec()){
+            el->updateStuff();
+            close();
+        }
+    }
+}
+
+
+void EdytujGraczaWLidze::on_powrotButton_clicked()
 {
     close();
 }

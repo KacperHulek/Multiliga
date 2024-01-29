@@ -8,10 +8,16 @@ Spotkania::Spotkania(QWidget *parent) :
 
     this->model = new QSqlQueryModel();
     model->setQuery("SELECT * FROM [HarmonogramSpotkan]");
-    ui->tableView->setModel(model);
+    ui->tabelaSpotkanView->setModel(model);
 }
 
 Spotkania::~Spotkania()
 {
     delete ui;
 }
+
+void Spotkania::on_powrotButton_clicked()
+{
+    close();
+}
+

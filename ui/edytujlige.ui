@@ -39,7 +39,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="zmienDateKolejkiButton">
          <property name="text">
           <string>Zmień</string>
          </property>
@@ -82,21 +82,21 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="edytujGraczaButton">
          <property name="text">
           <string>Edytuj gracza</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="dodajGraczaButton">
          <property name="text">
           <string>Dodaj gracza</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="powrotButton">
          <property name="text">
           <string>Powrót</string>
          </property>

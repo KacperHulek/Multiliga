@@ -17,7 +17,7 @@ ZmianaHasla::~ZmianaHasla()
     delete ui;
 }
 
-void ZmianaHasla::on_pushButton_clicked()
+void ZmianaHasla::on_zmienHasloButton_clicked()
 {
     QString stareHaslo = ui->stareHasloText->text();
     QString noweHaslo = ui->noweHasloText->text();
@@ -69,6 +69,11 @@ void ZmianaHasla::on_pushButton_clicked()
         else
             qDebug() << query.lastError().text();
     }
+}
 
+
+void ZmianaHasla::on_powrotButton_clicked()
+{
+    close();
 }
 

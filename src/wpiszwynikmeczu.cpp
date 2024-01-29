@@ -12,7 +12,6 @@ WpiszWynikMeczu::WpiszWynikMeczu(QWidget *parent, int queueID) :
     model->setQuery("SELECT * FROM [WpiszWynik] WHERE queueID = " + QString::number(queueID));
     ui->tableView->setModel(model);
 
-
 }
 
 WpiszWynikMeczu::~WpiszWynikMeczu()
@@ -20,14 +19,8 @@ WpiszWynikMeczu::~WpiszWynikMeczu()
     delete ui;
 }
 
-void WpiszWynikMeczu::on_pushButton_2_clicked()
+void WpiszWynikMeczu::on_wpiszWynikButton_clicked()
 {
-    close();
-}
-
-
-void WpiszWynikMeczu::on_pushButton_clicked()
-{   //wpisz wynik
     QModelIndex currentIndex = ui->tableView->currentIndex();
     int matchID = model->record(currentIndex.row()).value("matchID").toInt();
     QSqlQuery query;
@@ -43,5 +36,11 @@ void WpiszWynikMeczu::on_pushButton_clicked()
     else{
         qDebug()<<query.lastError();
     }
+}
+
+
+void WpiszWynikMeczu::on_powrotButton_clicked()
+{
+    close();
 }
 

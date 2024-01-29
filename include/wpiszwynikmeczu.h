@@ -16,9 +16,9 @@ public:
     ~WpiszWynikMeczu();
 
 private slots:
-    void on_pushButton_2_clicked();
+    void on_wpiszWynikButton_clicked();
 
-    void on_pushButton_clicked();
+    void on_powrotButton_clicked();
 
 private:
     Ui::WpiszWynikMeczu *ui;

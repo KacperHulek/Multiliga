@@ -26,7 +26,17 @@ Ogloszenia::~Ogloszenia()
     delete ui;
 }
 
-void Ogloszenia::on_pushButton_2_clicked()
+void Ogloszenia::on_edytujButton_clicked()
+{
+    // edytuj wpis
+    QModelIndex currentIndex = ui->listView->currentIndex();
+    int recordID = model->record(currentIndex.row()).value("ID").toInt();
+    EdytujWpis *okno = new EdytujWpis(nullptr,recordID,model);
+    okno->show();
+}
+
+
+void Ogloszenia::on_usunButton_clicked()
 {
     //usun wpis
     int result = QMessageBox::question(nullptr, "Usuwanie wpisu", "Czy napewno usunac dany wpis? Ta akcja jest nieodwracalna!",
@@ -49,28 +59,15 @@ void Ogloszenia::on_pushButton_2_clicked()
 }
 
 
-
-
-void Ogloszenia::on_pushButton_clicked()
-{
-    // edytuj wpis
-    QModelIndex currentIndex = ui->listView->currentIndex();
-    int recordID = model->record(currentIndex.row()).value("ID").toInt();
-    EdytujWpis *okno = new EdytujWpis(nullptr,recordID,model);
-    okno->show();
-}
-
-
-void Ogloszenia::on_pushButton_3_clicked()
+void Ogloszenia::on_dodajButton_clicked()
 {
     //dodaj nowe ogloszenie
     DodajOgloszenie *okno = new DodajOgloszenie(nullptr,model,currentUserID);
     okno->show();
-
 }
 
 
-void Ogloszenia::on_pushButton_4_clicked()
+void Ogloszenia::on_powrotButton_clicked()
 {
     close();
 }

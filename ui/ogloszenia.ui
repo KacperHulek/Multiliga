@@ -25,14 +25,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="edytujButton">
          <property name="text">
           <string>Edytuj</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="usunButton">
          <property name="text">
           <string>Usuń</string>
          </property>
@@ -41,14 +41,14 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="dodajButton">
        <property name="text">
         <string>Dodaj nowe ogłoszenie</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="powrotButton">
        <property name="text">
         <string>Powrót</string>
        </property>

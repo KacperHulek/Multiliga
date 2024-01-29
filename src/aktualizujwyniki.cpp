@@ -12,13 +12,11 @@ AktualizujWyniki::AktualizujWyniki(QWidget *parent) :
 
     leagueID = 1;
 
-
-
     model1->setQuery("SELECT [name], [ID] FROM [Leagues]");
-    ui->listView->setModel(model1);
+    ui->listaLigView->setModel(model1);
 
     model2->setQuery("SELECT [date], [ID], [leagueID] FROM [Queues] WHERE [leagueID] = " + QString::number(leagueID));
-    ui->listView_2->setModel(model2);
+    ui->listaKolejekView->setModel(model2);
 
     queueID = model2->record(0).value("ID").toInt();
 
@@ -29,50 +27,29 @@ AktualizujWyniki::~AktualizujWyniki()
     delete ui;
 }
 
-
-void AktualizujWyniki::on_listView_indexesMoved(const QModelIndexList &indexes)
-{
-
-}
-
-
-void AktualizujWyniki::on_listView_activated(const QModelIndex &index)
-{
-//    qDebug()<<leagueID;
-//    QModelIndex currentIndex = ui->listView->currentIndex();
-//    leagueID = model1->record(currentIndex.row()).value("ID").toInt();
-//    model2->setQuery("SELECT [date], [ID], [leagueID] FROM [Queues] WHERE leagueID = "+QString::number(leagueID));
-//    ui->listView_2->setModel(model2);
-}
-
-
-void AktualizujWyniki::on_listView_2_clicked(const QModelIndex &index)
-{
-    QModelIndex currentIndex = index;
-    queueID = model2->record(currentIndex.row()).value("ID").toInt();
-}
-
-
-void AktualizujWyniki::on_listView_clicked(const QModelIndex &index)
-{
-    //qDebug()<<leagueID;
-    QModelIndex currentIndex = index;
-    leagueID = model1->record(currentIndex.row()).value("ID").toInt();
-    model2->setQuery("SELECT [date], [ID], [leagueID] FROM [Queues] WHERE leagueID = "+QString::number(leagueID));
-    ui->listView_2->setModel(model2);
-}
-
-
-void AktualizujWyniki::on_pushButton_clicked()
-{
-    close();
-}
-
-
-void AktualizujWyniki::on_pushButton_2_clicked()
+void AktualizujWyniki::on_dalejButton_clicked()
 {
     //dalej queueID
     WpiszWynikMeczu *okno = new WpiszWynikMeczu(nullptr,queueID);
     okno->show();
+}
+
+void AktualizujWyniki::on_powrotButton_clicked()
+{
+    close();
+}
+
+void AktualizujWyniki::on_listaLigView_clicked(const QModelIndex &index)
+{
+    QModelIndex currentIndex = index;
+    leagueID = model1->record(currentIndex.row()).value("ID").toInt();
+    model2->setQuery("SELECT [date], [ID], [leagueID] FROM [Queues] WHERE leagueID = "+QString::number(leagueID));
+    ui->listaKolejekView->setModel(model2);
+}
+
+void AktualizujWyniki::on_listaKolejekView_clicked(const QModelIndex &index)
+{
+    QModelIndex currentIndex = index;
+    queueID = model2->record(currentIndex.row()).value("ID").toInt();
 }
 

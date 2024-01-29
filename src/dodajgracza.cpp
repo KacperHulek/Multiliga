@@ -18,15 +18,8 @@ DodajGracza::~DodajGracza()
     delete ui;
 }
 
-void DodajGracza::on_pushButton_2_clicked()
+void DodajGracza::on_zatwierdzButton_clicked()
 {
-    close();
-}
-
-
-void DodajGracza::on_pushButton_clicked()
-{
-    //zatwierdz
     QModelIndex currentIndex = ui->tableView->currentIndex();
     int playerID = model->record(currentIndex.row()).value("PlayerID").toInt();
     QSqlQuery query;
@@ -40,5 +33,11 @@ void DodajGracza::on_pushButton_clicked()
     }
     else
         qDebug()<<query.lastError();
+}
+
+
+void DodajGracza::on_powrotButton_clicked()
+{
+    close();
 }
 

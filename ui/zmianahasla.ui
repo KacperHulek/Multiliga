@@ -74,9 +74,16 @@
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="zmienHasloButton">
        <property name="text">
         <string>Zmień hasło</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="powrotButton">
+       <property name="text">
+        <string>Powrót</string>
        </property>
       </widget>
      </item>

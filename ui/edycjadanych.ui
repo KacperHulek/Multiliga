@@ -20,28 +20,28 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="zmienLoginButton">
        <property name="text">
         <string>Zmień login</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="zmienHasloButton">
        <property name="text">
         <string>Zmień hasło</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="usunKontoButton">
        <property name="text">
         <string>Usuń konto</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="zamknijButton">
        <property name="text">
         <string>Zamknij</string>
        </property>

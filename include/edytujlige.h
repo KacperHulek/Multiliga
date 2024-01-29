@@ -20,13 +20,13 @@ public:
     ~EdytujLige();
 
 private slots:
-    void on_pushButton_4_clicked();
+    void on_zmienDateKolejkiButton_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_edytujGraczaButton_clicked();
 
-    void on_pushButton_clicked();
+    void on_dodajGraczaButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_powrotButton_clicked();
 
 private:
     Ui::EdytujLige *ui;

@@ -13,17 +13,18 @@ class ZarzadzajLigami : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZarzadzajLigami(QWidget *parent = nullptr);
+    explicit ZarzadzajLigami(QWidget *parent = nullptr, int currentUserID = NULL);
     ~ZarzadzajLigami();
 
 private slots:
-    void on_pushButton_2_clicked();
+    void on_wybierzButton_clicked();
 
-    void on_pushButton_clicked();
+    void on_powrotButton_clicked();
 
 private:
     Ui::ZarzadzajLigami *ui;
     QSqlQueryModel *model;
+    int currentUserID;
 };
 
 #endif // ZARZADZAJLIGAMI_H

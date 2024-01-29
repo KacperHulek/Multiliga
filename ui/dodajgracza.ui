@@ -38,14 +38,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="zatwierdzButton">
          <property name="text">
           <string>Zatwierdź</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="powrotButton">
          <property name="text">
           <string>Powrót</string>
          </property>

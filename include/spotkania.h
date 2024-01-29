@@ -16,6 +16,9 @@ public:
     explicit Spotkania(QWidget *parent = nullptr);
     ~Spotkania();
 
+private slots:
+    void on_powrotButton_clicked();
+
 private:
     Ui::Spotkania *ui;
     QSqlQueryModel *model;

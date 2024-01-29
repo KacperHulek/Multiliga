@@ -18,8 +18,6 @@ EdytujWpis::EdytujWpis(QWidget *parent, int recordID,QSqlQueryModel *model) :
         ui->plainTextEdit->setPlainText(text);
     }
 
-
-
 }
 
 EdytujWpis::~EdytujWpis()
@@ -27,7 +25,7 @@ EdytujWpis::~EdytujWpis()
     delete ui;
 }
 
-void EdytujWpis::on_pushButton_clicked()
+void EdytujWpis::on_zatwierdzButton_clicked()
 {
     //zatwierdz
     QString newText = ui->plainTextEdit->toPlainText();
@@ -44,7 +42,7 @@ void EdytujWpis::on_pushButton_clicked()
 }
 
 
-void EdytujWpis::on_pushButton_2_clicked()
+void EdytujWpis::on_anulujButton_clicked()
 {
     //anuluj
     close();

@@ -8,6 +8,7 @@ ZmienDateKolejki::ZmienDateKolejki(QWidget *parent, EdytujLige *el) :
     el(el)
 {
     ui->setupUi(this);
+    ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
 }
 
 ZmienDateKolejki::~ZmienDateKolejki()
@@ -15,16 +16,8 @@ ZmienDateKolejki::~ZmienDateKolejki()
     delete ui;
 }
 
-void ZmienDateKolejki::on_pushButton_2_clicked()
+void ZmienDateKolejki::on_zatwierdzButton_clicked()
 {
-    //anuluj
-    close();
-}
-
-
-void ZmienDateKolejki::on_pushButton_clicked()
-{
-    //zatwierdz
     if(ui->dateTimeEdit->dateTime()<QDateTime::currentDateTime().addDays(1)){
         QMessageBox::information(nullptr, "Blad", "Podana data musi być większa od aktualnej o co najmniej 1 dzień!");
     }
@@ -42,5 +35,10 @@ void ZmienDateKolejki::on_pushButton_clicked()
         }
 
     }
+}
+
+void ZmienDateKolejki::on_anulujButton_clicked()
+{
+    close();
 }
 

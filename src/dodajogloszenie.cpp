@@ -15,9 +15,8 @@ DodajOgloszenie::~DodajOgloszenie()
     delete ui;
 }
 
-void DodajOgloszenie::on_pushButton_clicked()
+void DodajOgloszenie::on_dodajButton_clicked()
 {
-    //dodaj ogloszenie
     QString textBody = ui->plainTextEdit->toPlainText();
     QSqlQuery insertQuery;
     insertQuery.prepare("INSERT INTO [Advertisements] ([userID],[textBody]) "
@@ -34,7 +33,7 @@ void DodajOgloszenie::on_pushButton_clicked()
 }
 
 
-void DodajOgloszenie::on_pushButton_2_clicked()
+void DodajOgloszenie::on_anulujButton_clicked()
 {
     close();
 }

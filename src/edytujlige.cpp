@@ -18,11 +18,6 @@ EdytujLige::~EdytujLige()
     delete ui;
 }
 
-void EdytujLige::on_pushButton_4_clicked()
-{
-    close();
-}
-
 void EdytujLige::updateStuff(){
     queueID = 0;
     playerID = 0;
@@ -45,28 +40,29 @@ int EdytujLige::getQueueID(){
 int EdytujLige::getPlayerID(){
     return playerID;
 }
-void EdytujLige::on_pushButton_3_clicked()
+
+void EdytujLige::on_zmienDateKolejkiButton_clicked()
 {
     ZmienDateKolejki *okno = new ZmienDateKolejki(nullptr,this);
     okno->show();
 }
 
-
-void EdytujLige::on_pushButton_clicked()
+void EdytujLige::on_edytujGraczaButton_clicked()
 {
-    //edytuj gracza
     QModelIndex currentIndex = ui->tableView->currentIndex();
     playerID = model->record(currentIndex.row()).value("playerID").toInt();
     EdytujGraczaWLidze *okno = new EdytujGraczaWLidze(nullptr,this);
     okno->show();
 }
 
-
-void EdytujLige::on_pushButton_2_clicked()
+void EdytujLige::on_dodajGraczaButton_clicked()
 {
-    //dodaj gracza
     DodajGracza *okno = new DodajGracza(nullptr,this);
     okno->show();
+}
 
+void EdytujLige::on_powrotButton_clicked()
+{
+    close();
 }
 

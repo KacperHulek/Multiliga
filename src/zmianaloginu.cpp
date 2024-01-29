@@ -17,7 +17,7 @@ ZmianaLoginu::~ZmianaLoginu()
     delete ui;
 }
 
-void ZmianaLoginu::on_pushButton_clicked()
+void ZmianaLoginu::on_zmienLoginButton_clicked()
 {
     QString nowyLogin = ui->nowyLoginText->text();
     QString wpisaneHaslo = ui->hasloText->text();
@@ -60,5 +60,11 @@ void ZmianaLoginu::on_pushButton_clicked()
             qDebug() << query.lastError().text();
         }
     }
+}
+
+
+void ZmianaLoginu::on_powrotButton_clicked()
+{
+    close();
 }
 

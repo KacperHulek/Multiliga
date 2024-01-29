@@ -8,7 +8,7 @@ Ranking::Ranking(QWidget *parent) :
     ui->setupUi(this);
     this->listModel = new QSqlQueryModel();
     listModel->setQuery("SELECT [name],[ID] FROM [Leagues]");
-    ui->listView->setModel(listModel);
+    ui->listaLigView->setModel(listModel);
 
     this->tableModel = new QSqlQueryModel();
     //listModel->setQuery("SELECT * FROM [Ranking] WHERE leagueID = " + QString::number(leagueID));
@@ -20,11 +20,11 @@ Ranking::~Ranking()
     delete ui;
 }
 
-void Ranking::on_listView_clicked(const QModelIndex &index)
+void Ranking::on_listaLigView_clicked(const QModelIndex &index)
 {
     QModelIndex currentIndex = index;
     leagueID = listModel->record(currentIndex.row()).value("ID").toInt();
-    tableModel->setQuery("SELECT * FROM [Ranking] WHERE leagueID = " + QString::number(leagueID));
-    ui->tableView->setModel(tableModel);
+    tableModel->setQuery("SELECT * FROM [Ranking] WHERE leagueID = " + QString::number(leagueID) + " ORDER BY [wygrane mecze] DESC");
+    ui->tabelaGraczyView->setModel(tableModel);
 }
 

@@ -54,7 +54,7 @@ void MenuOpiekuna::on_tablicaButton_clicked()
 
 void MenuOpiekuna::on_zarzadzajButton_clicked()
 {
-    ZarzadzajLigami *okno = new ZarzadzajLigami(nullptr);
+    ZarzadzajLigami *okno = new ZarzadzajLigami(nullptr,mw->getCurrentUserID());
     okno->show();
 }
 
