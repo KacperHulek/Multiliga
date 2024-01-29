@@ -1,8 +1,8 @@
 #ifndef RANKING_H
 #define RANKING_H
 
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 namespace Ui {
 class Ranking;
 }
@@ -12,7 +12,7 @@ class Ranking : public QDialog
     Q_OBJECT
 
 public:
-    explicit Ranking(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr);
+    explicit Ranking(QWidget *parent = nullptr);
     ~Ranking();
 
 private slots:
@@ -20,7 +20,6 @@ private slots:
 
 private:
     Ui::Ranking *ui;
-    DatabaseManager *dbManager;
     QSqlQueryModel  *listModel;
     QSqlQueryModel  *tableModel;
     int leagueID;

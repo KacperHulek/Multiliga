@@ -2,7 +2,6 @@
 #define EDYTUJLIGE_H
 
 #include <QDialog>
-#include "databasemanager.h"
 #include <QtSql>
 
 namespace Ui {
@@ -17,7 +16,7 @@ public:
     void updateStuff();
     int getQueueID();
     int getPlayerID();
-    explicit EdytujLige(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr, int leagueID = 0);
+    explicit EdytujLige(QWidget *parent = nullptr, int leagueID = 0);
     ~EdytujLige();
 
 private slots:
@@ -31,7 +30,6 @@ private slots:
 
 private:
     Ui::EdytujLige *ui;
-    DatabaseManager *dbManager;
     QSqlQueryModel *model;
     int leagueID;
     int queueID;

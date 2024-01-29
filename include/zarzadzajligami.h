@@ -1,8 +1,8 @@
 #ifndef ZARZADZAJLIGAMI_H
 #define ZARZADZAJLIGAMI_H
 
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 
 namespace Ui {
 class ZarzadzajLigami;
@@ -13,7 +13,7 @@ class ZarzadzajLigami : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZarzadzajLigami(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr);
+    explicit ZarzadzajLigami(QWidget *parent = nullptr);
     ~ZarzadzajLigami();
 
 private slots:
@@ -23,7 +23,6 @@ private slots:
 
 private:
     Ui::ZarzadzajLigami *ui;
-    DatabaseManager *dbManager;
     QSqlQueryModel *model;
 };
 

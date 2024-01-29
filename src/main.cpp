@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QtSql>
 #include <QtDebug>
+#include <QSqlQueryModel>
 
 int main(int argc, char *argv[])
 {

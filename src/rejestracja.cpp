@@ -3,10 +3,9 @@
 #include <QMessageBox>
 #include "bcrypt/BCrypt.hpp"
 
-Rejestracja::Rejestracja(QWidget *parent, DatabaseManager *dbManager) :
+Rejestracja::Rejestracja(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Rejestracja),
-    dbManager(dbManager)
+    ui(new Ui::Rejestracja)
 {
     ui->setupUi(this);
 }
@@ -34,7 +33,7 @@ void Rejestracja::on_pushButton_clicked()
         QMessageBox::information(nullptr, "Ostrzezenie", "Maksymalna liczba znakow to 50!");
     else if(login.size()<4 || haslo.size()<4 || phaslo.size()<4 || email.size()<4 || imie.size()<2 || nazwisko.size()<2)
         QMessageBox::information(nullptr, "Ostrzezenie", "Minimalna liczba znakow to 4 (2 dla imienia i nazwiska)!");
-    else if (dbManager){
+    else if (1){//tu bylo sprawdzenie czy jest polaczenie z db
         QSqlQuery querylogin;
         querylogin.prepare("SELECT [login] FROM [Users] WHERE login = :login");
         querylogin.bindValue(":login", login);

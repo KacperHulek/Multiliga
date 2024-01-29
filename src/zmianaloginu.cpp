@@ -4,10 +4,10 @@
 #include "bcrypt/BCrypt.hpp"
 #include <QMessageBox>
 
-ZmianaLoginu::ZmianaLoginu(QWidget *parent, DatabaseManager *dbManager) :
+ZmianaLoginu::ZmianaLoginu(QWidget *parent, int currentUserID) :
     QDialog(parent),
     ui(new Ui::ZmianaLoginu),
-    dbManager(dbManager)
+    currentUserID(currentUserID)
 {
     ui->setupUi(this);
 }
@@ -32,7 +32,7 @@ void ZmianaLoginu::on_pushButton_clicked()
     else{
         QSqlQuery query;
         query.prepare("SELECT * FROM Users WHERE [ID] = :ID");
-        query.bindValue(":ID", dbManager->getCurrentUserID());
+        query.bindValue(":ID", currentUserID);
         if(query.exec() && query.next()){
             QByteArray storedPassword = query.value("password").toByteArray();
             QString storedPasswordString = QString::fromUtf8(storedPassword);
@@ -43,7 +43,7 @@ void ZmianaLoginu::on_pushButton_clicked()
                     QSqlQuery updateQuery;
                     updateQuery.prepare("UPDATE Users SET [login] = :newLogin WHERE [ID] = :ID");
                     updateQuery.bindValue(":newLogin", nowyLogin);
-                    updateQuery.bindValue(":ID", dbManager->getCurrentUserID());
+                    updateQuery.bindValue(":ID", currentUserID);
                     if (updateQuery.exec()) {
                         QMessageBox::information(nullptr, "Sukces", "Poprawnie zmieniono login!");
                         close();

@@ -2,10 +2,9 @@
 #include "ui_aktualizujwyniki.h"
 #include "../include/wpiszwynikmeczu.h"
 
-AktualizujWyniki::AktualizujWyniki(QWidget *parent, DatabaseManager *dbManager) :
+AktualizujWyniki::AktualizujWyniki(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AktualizujWyniki),
-    dbManager(dbManager)
+    ui(new Ui::AktualizujWyniki)
 {
     ui->setupUi(this);
     this->model1 = new QSqlQueryModel();
@@ -73,7 +72,7 @@ void AktualizujWyniki::on_pushButton_clicked()
 void AktualizujWyniki::on_pushButton_2_clicked()
 {
     //dalej queueID
-    WpiszWynikMeczu *okno = new WpiszWynikMeczu(nullptr,dbManager,queueID);
+    WpiszWynikMeczu *okno = new WpiszWynikMeczu(nullptr,queueID);
     okno->show();
 }
 

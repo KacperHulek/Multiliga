@@ -2,10 +2,9 @@
 #include "ui_zmiendatekolejki.h"
 #include <QMessageBox>
 
-ZmienDateKolejki::ZmienDateKolejki(QWidget *parent, DatabaseManager *dbManager, EdytujLige *el) :
+ZmienDateKolejki::ZmienDateKolejki(QWidget *parent, EdytujLige *el) :
     QDialog(parent),
     ui(new Ui::ZmienDateKolejki),
-    dbManager(dbManager),
     el(el)
 {
     ui->setupUi(this);

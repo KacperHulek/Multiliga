@@ -2,10 +2,9 @@
 #include "ui_edytujgraczawlidze.h"
 #include <QMessageBox>
 
-EdytujGraczaWLidze::EdytujGraczaWLidze(QWidget *parent, DatabaseManager *dbManager, EdytujLige *el) :
+EdytujGraczaWLidze::EdytujGraczaWLidze(QWidget *parent, EdytujLige *el) :
     QDialog(parent),
     ui(new Ui::EdytujGraczaWLidze),
-    dbManager(dbManager),
     el(el)
 {
     ui->setupUi(this);

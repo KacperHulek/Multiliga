@@ -1,8 +1,7 @@
 #ifndef AKTUALIZUJWYNIKI_H
 #define AKTUALIZUJWYNIKI_H
-
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 namespace Ui {
 class AktualizujWyniki;
 }
@@ -12,7 +11,7 @@ class AktualizujWyniki : public QDialog
     Q_OBJECT
 
 public:
-    explicit AktualizujWyniki(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr);
+    explicit AktualizujWyniki(QWidget *parent = nullptr);
     ~AktualizujWyniki();
 
 private slots:
@@ -30,7 +29,6 @@ private slots:
 
 private:
     Ui::AktualizujWyniki *ui;
-    DatabaseManager *dbManager;
     QSqlQueryModel *model1;
     QSqlQueryModel *model2;
     int leagueID;

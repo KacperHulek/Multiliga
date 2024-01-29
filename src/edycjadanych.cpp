@@ -3,10 +3,9 @@
 #include <QMessageBox>
 #include "../include/zmianaloginu.h"
 #include "../include/zmianahasla.h"
-EdycjaDanych::EdycjaDanych(QWidget *parent,DatabaseManager *dbManager, MenuOpiekuna *mo) :
+EdycjaDanych::EdycjaDanych(QWidget *parent, MenuOpiekuna *mo) :
     QDialog(parent),
     ui(new Ui::EdycjaDanych),
-    dbManager(dbManager),
     mo(mo)
 {
     ui->setupUi(this);
@@ -20,7 +19,7 @@ EdycjaDanych::~EdycjaDanych()
 //zmiana loginu
 void EdycjaDanych::on_pushButton_clicked()
 {
-    ZmianaLoginu *okno = new ZmianaLoginu(nullptr,dbManager);
+    ZmianaLoginu *okno = new ZmianaLoginu(nullptr, mo->getCurrentUserID());
     okno->show();
 }
 
@@ -33,7 +32,7 @@ void EdycjaDanych::on_pushButton_3_clicked()
     if (result == QMessageBox::Yes) {
         QSqlQuery deleteQuery;
         deleteQuery.prepare("DELETE FROM Users WHERE [ID] = :userID");
-        deleteQuery.bindValue(":userID", dbManager->getCurrentUserID());
+        deleteQuery.bindValue(":userID", mo->getCurrentUserID());
         if (deleteQuery.exec()) {
             QMessageBox::information(nullptr, "Sukces", "Poprawnie usunieto konto!");
             mo->showMainWindow();
@@ -51,7 +50,7 @@ void EdycjaDanych::on_pushButton_3_clicked()
 
 void EdycjaDanych::on_pushButton_2_clicked()
 {
-    ZmianaHasla *okno = new ZmianaHasla(nullptr,dbManager);
+    ZmianaHasla *okno = new ZmianaHasla(nullptr,mo->getCurrentUserID());
     okno->show();
 }
 

@@ -4,10 +4,10 @@
 #include "bcrypt/BCrypt.hpp"
 #include <QMessageBox>
 
-ZmianaHasla::ZmianaHasla(QWidget *parent, DatabaseManager *dbManager) :
+ZmianaHasla::ZmianaHasla(QWidget *parent, int currentUserID) :
     QDialog(parent),
     ui(new Ui::ZmianaHasla),
-    dbManager(dbManager)
+    currentUserID(currentUserID)
 {
     ui->setupUi(this);
 }
@@ -33,7 +33,7 @@ void ZmianaHasla::on_pushButton_clicked()
         QSqlQuery query;
         qDebug()<<"test2";
         query.prepare("SELECT * FROM Users WHERE [ID] = :ID");
-        query.bindValue(":ID", dbManager->getCurrentUserID());
+        query.bindValue(":ID", currentUserID);
         qDebug()<<"test3";
         if(query.exec() && query.next()){
             QByteArray storedPassword = query.value("password").toByteArray();
@@ -50,7 +50,7 @@ void ZmianaHasla::on_pushButton_clicked()
                     QSqlQuery updateQuery;
                     updateQuery.prepare("UPDATE Users SET [password] = :newPassword WHERE [ID] = :ID");
                     updateQuery.bindValue(":newPassword", hashedPasswordBytes);
-                    updateQuery.bindValue(":ID", dbManager->getCurrentUserID());
+                    updateQuery.bindValue(":ID", currentUserID);
 
                     if (updateQuery.exec()) {
                         QMessageBox::information(nullptr, "Sukces", "Poprawnie zmieniono haslo!");

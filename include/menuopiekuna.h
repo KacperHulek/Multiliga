@@ -1,8 +1,8 @@
 #ifndef MENUOPIEKUNA_H
 #define MENUOPIEKUNA_H
 
+#include <QtSql>
 #include <QWidget>
-#include "databasemanager.h"
 #include "mainwindow.h"
 namespace Ui {
 class MenuOpiekuna;
@@ -13,9 +13,9 @@ class MenuOpiekuna : public QWidget
     Q_OBJECT
 
 public:
-    explicit MenuOpiekuna(QWidget *parent = nullptr,
-    DatabaseManager *dbManager = nullptr, MainWindow *mw = nullptr);
+    explicit MenuOpiekuna(QWidget *parent = nullptr, MainWindow *mw = nullptr);
     void showMainWindow();
+    int getCurrentUserID();
     ~MenuOpiekuna();
 
 private slots:
@@ -35,8 +35,8 @@ private slots:
 
 private:
     Ui::MenuOpiekuna *ui;
-    DatabaseManager *dbManager;
     MainWindow *mw;
+
 };
 
 #endif // MENUOPIEKUNA_H

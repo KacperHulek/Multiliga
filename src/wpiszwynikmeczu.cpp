@@ -1,10 +1,9 @@
 #include "../include/wpiszwynikmeczu.h"
 #include "ui_wpiszwynikmeczu.h"
 
-WpiszWynikMeczu::WpiszWynikMeczu(QWidget *parent,DatabaseManager *dbManager, int queueID) :
+WpiszWynikMeczu::WpiszWynikMeczu(QWidget *parent, int queueID) :
     QDialog(parent),
     ui(new Ui::WpiszWynikMeczu),
-    dbManager(dbManager),
     queueID(queueID)
 {
     ui->setupUi(this);

@@ -6,10 +6,10 @@
 #include <QPlainTextEdit>
 #include "../include/edytujwpis.h"
 #include "../include/dodajogloszenie.h"
-Ogloszenia::Ogloszenia(QWidget *parent, DatabaseManager *dbManager) :
+Ogloszenia::Ogloszenia(QWidget *parent, int currentUserID) :
     QDialog(parent),
     ui(new Ui::Ogloszenia),
-    dbManager(dbManager)
+    currentUserID(currentUserID)
 {
     ui->setupUi(this);
     ui->listView->setWordWrap(true);
@@ -56,7 +56,7 @@ void Ogloszenia::on_pushButton_clicked()
     // edytuj wpis
     QModelIndex currentIndex = ui->listView->currentIndex();
     int recordID = model->record(currentIndex.row()).value("ID").toInt();
-    EdytujWpis *okno = new EdytujWpis(nullptr,dbManager,recordID,model);
+    EdytujWpis *okno = new EdytujWpis(nullptr,recordID,model);
     okno->show();
 }
 
@@ -64,7 +64,7 @@ void Ogloszenia::on_pushButton_clicked()
 void Ogloszenia::on_pushButton_3_clicked()
 {
     //dodaj nowe ogloszenie
-    DodajOgloszenie *okno = new DodajOgloszenie(nullptr,dbManager,model);
+    DodajOgloszenie *okno = new DodajOgloszenie(nullptr,model,currentUserID);
     okno->show();
 
 }

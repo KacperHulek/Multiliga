@@ -2,11 +2,9 @@
 #include "ui_edytujwpis.h"
 #include <QSql>
 #include <QMessageBox>
-EdytujWpis::EdytujWpis(QWidget *parent,
-                       DatabaseManager *dbManager,int recordID,QSqlQueryModel *model) :
+EdytujWpis::EdytujWpis(QWidget *parent, int recordID,QSqlQueryModel *model) :
     QDialog(parent),
     ui(new Ui::EdytujWpis),
-    dbManager(dbManager),
     recordID(recordID),
     model(model)
 {

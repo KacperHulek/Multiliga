@@ -1,12 +1,11 @@
 #include "../include/dodajogloszenie.h"
 #include "ui_dodajogloszenie.h"
 #include <QMessageBox>
-DodajOgloszenie::DodajOgloszenie(QWidget *parent,
-                                 DatabaseManager *dbManager,QSqlQueryModel *model) :
+DodajOgloszenie::DodajOgloszenie(QWidget *parent, QSqlQueryModel *model, int currentUserID) :
     QDialog(parent),
     ui(new Ui::DodajOgloszenie),
-    dbManager(dbManager),
-    model(model)
+    model(model),
+    currentUserID(currentUserID)
 {
     ui->setupUi(this);
 }
@@ -24,7 +23,7 @@ void DodajOgloszenie::on_pushButton_clicked()
     insertQuery.prepare("INSERT INTO [Advertisements] ([userID],[textBody]) "
                         "VALUES (:userID, :textBody)");
 
-    insertQuery.bindValue(":userID", dbManager->getCurrentUserID());
+    insertQuery.bindValue(":userID", currentUserID);
     insertQuery.bindValue(":textBody", textBody);
     if(insertQuery.exec()){
         model->setQuery("SELECT * FROM [TablicaOgloszen]");

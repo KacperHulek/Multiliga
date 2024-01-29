@@ -1,8 +1,7 @@
 #ifndef ZMIANAHASLA_H
 #define ZMIANAHASLA_H
-
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 namespace Ui {
 class ZmianaHasla;
 }
@@ -12,7 +11,7 @@ class ZmianaHasla : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZmianaHasla(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr);
+    explicit ZmianaHasla(QWidget *parent = nullptr, int currentUserID = NULL);
     ~ZmianaHasla();
 
 private slots:
@@ -20,7 +19,7 @@ private slots:
 
 private:
     Ui::ZmianaHasla *ui;
-    DatabaseManager *dbManager;
+    int currentUserID;
 };
 
 #endif // ZMIANAHASLA_H

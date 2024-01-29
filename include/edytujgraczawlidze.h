@@ -1,8 +1,8 @@
 #ifndef EDYTUJGRACZAWLIDZE_H
 #define EDYTUJGRACZAWLIDZE_H
 
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 #include "edytujlige.h"
 
 namespace Ui {
@@ -14,8 +14,7 @@ class EdytujGraczaWLidze : public QDialog
     Q_OBJECT
 
 public:
-    explicit EdytujGraczaWLidze(QWidget *parent = nullptr,
-                                DatabaseManager *dbManager = nullptr, EdytujLige *el = nullptr);
+    explicit EdytujGraczaWLidze(QWidget *parent = nullptr, EdytujLige *el = nullptr);
     ~EdytujGraczaWLidze();
 
 private slots:
@@ -27,7 +26,6 @@ private slots:
 
 private:
     Ui::EdytujGraczaWLidze *ui;
-    DatabaseManager *dbManager;
     EdytujLige *el;
 };
 

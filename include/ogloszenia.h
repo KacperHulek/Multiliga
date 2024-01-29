@@ -2,7 +2,6 @@
 #define OGLOSZENIA_H
 
 #include <QDialog>
-#include "databasemanager.h"
 #include <QtSql>
 
 namespace Ui {
@@ -14,7 +13,7 @@ class Ogloszenia : public QDialog
     Q_OBJECT
 
 public:
-    explicit Ogloszenia(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr);
+    explicit Ogloszenia(QWidget *parent = nullptr, int currentUserID = NULL);
     ~Ogloszenia();
 
 private slots:
@@ -28,8 +27,8 @@ private slots:
 
 private:
     Ui::Ogloszenia *ui;
-    DatabaseManager *dbManager;
     QSqlQueryModel *model;
+    int currentUserID;
 };
 
 #endif // OGLOSZENIA_H

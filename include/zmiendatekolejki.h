@@ -1,10 +1,8 @@
 #ifndef ZMIENDATEKOLEJKI_H
 #define ZMIENDATEKOLEJKI_H
-
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 #include "edytujlige.h"
-//do zrobienia
 namespace Ui {
 class ZmienDateKolejki;
 }
@@ -14,8 +12,7 @@ class ZmienDateKolejki : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZmienDateKolejki(QWidget *parent = nullptr,
-                              DatabaseManager *dbManager = nullptr, EdytujLige *el = nullptr);
+    explicit ZmienDateKolejki(QWidget *parent = nullptr, EdytujLige *el = nullptr);
     ~ZmienDateKolejki();
 
 private slots:
@@ -25,7 +22,6 @@ private slots:
 
 private:
     Ui::ZmienDateKolejki *ui;
-    DatabaseManager *dbManager;
     EdytujLige *el;
 };
 

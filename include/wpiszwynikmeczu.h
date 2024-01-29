@@ -1,8 +1,8 @@
 #ifndef WPISZWYNIKMECZU_H
 #define WPISZWYNIKMECZU_H
 
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 namespace Ui {
 class WpiszWynikMeczu;
 }
@@ -12,7 +12,7 @@ class WpiszWynikMeczu : public QDialog
     Q_OBJECT
 
 public:
-    explicit WpiszWynikMeczu(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr, int queueID = 0);
+    explicit WpiszWynikMeczu(QWidget *parent = nullptr, int queueID = 0);
     ~WpiszWynikMeczu();
 
 private slots:
@@ -22,7 +22,6 @@ private slots:
 
 private:
     Ui::WpiszWynikMeczu *ui;
-    DatabaseManager *dbManager;
     int queueID;
     QSqlQueryModel *model;
 

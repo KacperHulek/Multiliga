@@ -2,7 +2,6 @@
 #define SPOTKANIA_H
 
 #include <QDialog>
-#include "databasemanager.h"
 #include <QtSql>
 
 namespace Ui {
@@ -14,12 +13,11 @@ class Spotkania : public QDialog
     Q_OBJECT
 
 public:
-    explicit Spotkania(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr);
+    explicit Spotkania(QWidget *parent = nullptr);
     ~Spotkania();
 
 private:
     Ui::Spotkania *ui;
-    DatabaseManager *dbManager;
     QSqlQueryModel *model;
 };
 

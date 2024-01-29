@@ -1,28 +1,27 @@
 #include "../include/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "../include/databasemanager.h"
 #include "../include/menuopiekuna.h"
 #include "../include/rejestracja.h"
 #include "bcrypt/BCrypt.hpp"
 #include <iostream>
 #include <QMessageBox>
+#include <QtSql>
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    dbManager(nullptr) // Inicjalizacja obiektu DatabaseManager
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    QString dbname = "../sqlitedb.db";
 
-    dbManager = new DatabaseManager(dbname); // Tworzenie obiektu DatabaseManager
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("../sqlitedb.db");
 
-    if (dbManager->openConnection()) {
+    if (db.open()){
         qDebug() << "Connected to the database.";
     } else {
-        qDebug()<<"Error = "<<dbManager->lastError();
+        qDebug()<<"Error = "<< db.lastError();
     }
 }
 
@@ -30,9 +29,8 @@ MainWindow::~MainWindow()
 {
     delete ui;
 
-    if (dbManager) {
-        dbManager->closeConnection(); // Zamknij połączenie z bazą danych
-        delete dbManager; // Zwolnij zasoby obiektu DatabaseManager
+    if (db.isOpen()){
+        db.close();
     }
 }
 
@@ -41,7 +39,7 @@ void MainWindow::on_zalogujButton_clicked()
     QString login = ui->loginText->text();
     QString haslo = ui->hasloText->text();
     ui->hasloText->setText("");
-    if (dbManager) {
+    if (db.isOpen()) {
         QSqlQuery loginquery;
         loginquery.prepare("SELECT * FROM [Users] WHERE login = :login");
         loginquery.bindValue(":login", login);
@@ -51,13 +49,13 @@ void MainWindow::on_zalogujButton_clicked()
             QByteArray storedPassword = loginquery.value("password").toByteArray();
             QString storedPasswordString = QString::fromUtf8(storedPassword);
             if(BCrypt::validatePassword(haslo.toStdString(),storedPasswordString.toStdString())){
-                dbManager->setCurrentUserID(loginquery.value("ID").toInt());
+                setCurrentUserID(loginquery.value("ID").toInt());
                 Role rola = getRoleFromString(loginquery.value("role").toString());
                 switch (rola){
                 case Role::opiekun:{
                     this->hide();
 
-                    MenuOpiekuna *menu = new MenuOpiekuna(nullptr, dbManager,this);
+                    MenuOpiekuna *menu = new MenuOpiekuna(nullptr, this);
                     menu->show();
 
                     break;
@@ -83,7 +81,7 @@ void MainWindow::on_zalogujButton_clicked()
 
 void MainWindow::on_zarejestrujButton_clicked()
 {
-    Rejestracja *rejestracja = new Rejestracja(nullptr, dbManager); // Przekazanie wskaźnika do DatabaseManager
+    Rejestracja *rejestracja = new Rejestracja(nullptr); // Przekazanie wskaźnika do DatabaseManager
     rejestracja->show();
 }
 
@@ -103,4 +101,11 @@ Role MainWindow::getRoleFromString(const QString& roleStr) {
         return Role::sponsor;
     }
     return Role::gosc; // Domyślna rola
+}
+
+void MainWindow::setCurrentUserID(int ID){
+    currentUserID = ID;
+}
+int MainWindow::getCurrentUserID(){
+    return currentUserID;
 }

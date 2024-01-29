@@ -1,8 +1,7 @@
 #ifndef EDYTUJWPIS_H
 #define EDYTUJWPIS_H
-
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 namespace Ui {
 class EdytujWpis;
 }
@@ -12,8 +11,7 @@ class EdytujWpis : public QDialog
     Q_OBJECT
 
 public:
-    explicit EdytujWpis(QWidget *parent = nullptr,
-                        DatabaseManager *dbManager = nullptr, int recordID = 0,QSqlQueryModel *model=nullptr);
+    explicit EdytujWpis(QWidget *parent = nullptr, int recordID = 0, QSqlQueryModel *model=nullptr);
     ~EdytujWpis();
 
 private slots:
@@ -23,7 +21,6 @@ private slots:
 
 private:
     Ui::EdytujWpis *ui;
-    DatabaseManager *dbManager;
     int recordID;
     QSqlQueryModel *model;
 };

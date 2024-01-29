@@ -1,9 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QtSql>
 #include <QMainWindow>
-#include "databasemanager.h"
-
 enum class Role {
     opiekun,
     gracz,
@@ -25,6 +24,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void setCurrentUserID(int ID);
+    int getCurrentUserID();
+
 private slots:
     void on_zalogujButton_clicked();
 
@@ -32,8 +34,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    DatabaseManager *dbManager;
     Role getRoleFromString(const QString& roleStr);
+    QSqlDatabase db;
+    int currentUserID;
 };
 
 #endif // MAINWINDOW_H

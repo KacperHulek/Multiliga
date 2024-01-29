@@ -1,8 +1,8 @@
 #ifndef EDYCJADANYCH_H
 #define EDYCJADANYCH_H
 
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 #include "menuopiekuna.h"
 namespace Ui {
 class EdycjaDanych;
@@ -13,8 +13,7 @@ class EdycjaDanych : public QDialog
     Q_OBJECT
 
 public:
-    explicit EdycjaDanych(QWidget *parent = nullptr,
-                          DatabaseManager *dbManager = nullptr, MenuOpiekuna *mo = nullptr);
+    explicit EdycjaDanych(QWidget *parent = nullptr, MenuOpiekuna *mo = nullptr);
     ~EdycjaDanych();
 
 
@@ -29,7 +28,6 @@ private slots:
 
 private:
     Ui::EdycjaDanych *ui;
-    DatabaseManager *dbManager;
     MenuOpiekuna *mo;
 };
 

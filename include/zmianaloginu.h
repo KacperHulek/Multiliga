@@ -1,8 +1,7 @@
 #ifndef ZMIANALOGINU_H
 #define ZMIANALOGINU_H
-
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 
 namespace Ui {
 class ZmianaLoginu;
@@ -13,7 +12,7 @@ class ZmianaLoginu : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZmianaLoginu(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr);
+    explicit ZmianaLoginu(QWidget *parent = nullptr, int getCurrentUserID= NULL);
     ~ZmianaLoginu();
 
 private slots:
@@ -21,7 +20,7 @@ private slots:
 
 private:
     Ui::ZmianaLoginu *ui;
-    DatabaseManager *dbManager;
+    int currentUserID;
 };
 
 #endif // ZMIANALOGINU_H

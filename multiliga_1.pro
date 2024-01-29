@@ -14,7 +14,6 @@ CONFIG += c++17
 
 SOURCES += \
     src/aktualizujwyniki.cpp \
-    src/databasemanager.cpp \
     src/dodajgracza.cpp \
     src/dodajogloszenie.cpp \
     src/edycjadanych.cpp \
@@ -36,7 +35,6 @@ SOURCES += \
 
 HEADERS += \
     include/aktualizujwyniki.h \
-    include/databasemanager.h \
     include/dodajgracza.h \
     include/dodajogloszenie.h \
     include/edycjadanych.h \

@@ -1,8 +1,8 @@
 #ifndef DODAJGRACZA_H
 #define DODAJGRACZA_H
 
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 #include "edytujlige.h"
 
 namespace Ui {
@@ -14,8 +14,7 @@ class DodajGracza : public QDialog
     Q_OBJECT
 
 public:
-    explicit DodajGracza(QWidget *parent = nullptr,
-                         DatabaseManager *dbManager = nullptr, EdytujLige *el = nullptr);
+    explicit DodajGracza(QWidget *parent = nullptr, EdytujLige *el = nullptr);
     ~DodajGracza();
 
 private slots:
@@ -25,7 +24,6 @@ private slots:
 
 private:
     Ui::DodajGracza *ui;
-    DatabaseManager *dbManager;
     EdytujLige *el;
     QSqlQueryModel *model;
 };

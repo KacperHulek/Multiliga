@@ -1,8 +1,8 @@
 #ifndef REJESTRACJA_H
 #define REJESTRACJA_H
 
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 
 namespace Ui {
 class Rejestracja;
@@ -13,7 +13,7 @@ class Rejestracja : public QDialog
     Q_OBJECT
 
 public:
-    explicit Rejestracja(QWidget *parent = nullptr, DatabaseManager *dbManager = nullptr);
+    explicit Rejestracja(QWidget *parent = nullptr);
     ~Rejestracja();
 
 private slots:
@@ -21,7 +21,6 @@ private slots:
 
 private:
     Ui::Rejestracja *ui;
-    DatabaseManager *dbManager;
 };
 
 #endif // REJESTRACJA_H

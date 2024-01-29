@@ -1,8 +1,8 @@
 #ifndef DODAJOGLOSZENIE_H
 #define DODAJOGLOSZENIE_H
 
+#include <QtSql>
 #include <QDialog>
-#include "databasemanager.h"
 namespace Ui {
 class DodajOgloszenie;
 }
@@ -12,8 +12,7 @@ class DodajOgloszenie : public QDialog
     Q_OBJECT
 
 public:
-    explicit DodajOgloszenie(QWidget *parent = nullptr,
-                             DatabaseManager *dbManager = nullptr,QSqlQueryModel *model=nullptr);
+    explicit DodajOgloszenie(QWidget *parent = nullptr, QSqlQueryModel *model=nullptr, int currentUserID = NULL);
     ~DodajOgloszenie();
 
 private slots:
@@ -23,8 +22,8 @@ private slots:
 
 private:
     Ui::DodajOgloszenie *ui;
-    DatabaseManager *dbManager;
     QSqlQueryModel *model;
+    int currentUserID;
 };
 
 #endif // DODAJOGLOSZENIE_H

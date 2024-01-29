@@ -1,10 +1,9 @@
 #include "../include/ranking.h"
 #include "ui_ranking.h"
 
-Ranking::Ranking(QWidget *parent, DatabaseManager *dbManager) :
+Ranking::Ranking(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Ranking),
-    dbManager(dbManager)
+    ui(new Ui::Ranking)
 {
     ui->setupUi(this);
     this->listModel = new QSqlQueryModel();

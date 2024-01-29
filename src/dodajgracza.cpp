@@ -1,10 +1,9 @@
 #include "../include/dodajgracza.h"
 #include "ui_dodajgracza.h"
 
-DodajGracza::DodajGracza(QWidget *parent, DatabaseManager *dbManager, EdytujLige *el) :
+DodajGracza::DodajGracza(QWidget *parent, EdytujLige *el) :
     QDialog(parent),
     ui(new Ui::DodajGracza),
-    dbManager(dbManager),
     el(el)
 {
     ui->setupUi(this);
