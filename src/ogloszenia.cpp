@@ -1,11 +1,11 @@
-#include "ogloszenia.h"
+#include "../include/ogloszenia.h"
 #include "ui_ogloszenia.h"
 #include <QDebug>
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QPlainTextEdit>
-#include "edytujwpis.h"
-#include "dodajogloszenie.h"
+#include "../include/edytujwpis.h"
+#include "../include/dodajogloszenie.h"
 Ogloszenia::Ogloszenia(QWidget *parent, DatabaseManager *dbManager) :
     QDialog(parent),
     ui(new Ui::Ogloszenia),

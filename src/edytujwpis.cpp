@@ -1,4 +1,4 @@
-#include "edytujwpis.h"
+#include "../include/edytujwpis.h"
 #include "ui_edytujwpis.h"
 #include <QSql>
 #include <QMessageBox>

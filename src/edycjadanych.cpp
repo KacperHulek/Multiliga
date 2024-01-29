@@ -1,8 +1,8 @@
-#include "edycjadanych.h"
+#include "../include/edycjadanych.h"
 #include "ui_edycjadanych.h"
 #include <QMessageBox>
-#include "zmianaloginu.h"
-#include "zmianahasla.h"
+#include "../include/zmianaloginu.h"
+#include "../include/zmianahasla.h"
 EdycjaDanych::EdycjaDanych(QWidget *parent,DatabaseManager *dbManager, MenuOpiekuna *mo) :
     QDialog(parent),
     ui(new Ui::EdycjaDanych),

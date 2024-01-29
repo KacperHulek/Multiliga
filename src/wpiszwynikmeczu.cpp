@@ -1,4 +1,4 @@
-#include "wpiszwynikmeczu.h"
+#include "../include/wpiszwynikmeczu.h"
 #include "ui_wpiszwynikmeczu.h"
 
 WpiszWynikMeczu::WpiszWynikMeczu(QWidget *parent,DatabaseManager *dbManager, int queueID) :

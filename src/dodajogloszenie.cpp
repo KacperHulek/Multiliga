@@ -1,4 +1,4 @@
-#include "dodajogloszenie.h"
+#include "../include/dodajogloszenie.h"
 #include "ui_dodajogloszenie.h"
 #include <QMessageBox>
 DodajOgloszenie::DodajOgloszenie(QWidget *parent,

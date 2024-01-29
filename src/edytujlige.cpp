@@ -1,8 +1,8 @@
-#include "edytujlige.h"
+#include "../include/edytujlige.h"
 #include "ui_edytujlige.h"
-#include "zmiendatekolejki.h"
-#include "edytujgraczawlidze.h"
-#include "dodajgracza.h"
+#include "../include/zmiendatekolejki.h"
+#include "../include/edytujgraczawlidze.h"
+#include "../include/dodajgracza.h"
 
 EdytujLige::EdytujLige(QWidget *parent, DatabaseManager *dbManager, int leagueID) :
     QDialog(parent),

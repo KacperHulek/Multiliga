@@ -1,8 +1,8 @@
-#include "mainwindow.h"
+#include "../include/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "databasemanager.h"
-#include "menuopiekuna.h"
-#include "rejestracja.h"
+#include "../include/databasemanager.h"
+#include "../include/menuopiekuna.h"
+#include "../include/rejestracja.h"
 #include "bcrypt/BCrypt.hpp"
 #include <iostream>
 #include <QMessageBox>
@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QString dbname = "sqlitedb.db";
+    QString dbname = "../sqlitedb.db";
 
     dbManager = new DatabaseManager(dbname); // Tworzenie obiektu DatabaseManager
 
@@ -102,6 +102,5 @@ Role MainWindow::getRoleFromString(const QString& roleStr) {
     else if (roleStr == "sponsor") {
         return Role::sponsor;
     }
-    // Dodaj obsługę innych ról w miarę potrzeb
-    return Role::gosc; // Domyślna rola, jeśli nie zostanie dopasowana żadna rola
+    return Role::gosc; // Domyślna rola
 }

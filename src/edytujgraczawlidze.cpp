@@ -1,4 +1,4 @@
-#include "edytujgraczawlidze.h"
+#include "../include/edytujgraczawlidze.h"
 #include "ui_edytujgraczawlidze.h"
 #include <QMessageBox>
 

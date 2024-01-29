@@ -1,4 +1,4 @@
-#include "zmianahasla.h"
+#include "../include/zmianahasla.h"
 #include "ui_zmianahasla.h"
 #include <QDebug>
 #include "bcrypt/BCrypt.hpp"

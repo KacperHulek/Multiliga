@@ -1,6 +1,6 @@
-#include "zarzadzajligami.h"
+#include "../include/zarzadzajligami.h"
 #include "ui_zarzadzajligami.h"
-#include "edytujlige.h"
+#include "../include/edytujlige.h"
 
 ZarzadzajLigami::ZarzadzajLigami(QWidget *parent, DatabaseManager *dbManager) :
     QDialog(parent),

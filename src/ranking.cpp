@@ -1,4 +1,4 @@
-#include "ranking.h"
+#include "../include/ranking.h"
 #include "ui_ranking.h"
 
 Ranking::Ranking(QWidget *parent, DatabaseManager *dbManager) :
