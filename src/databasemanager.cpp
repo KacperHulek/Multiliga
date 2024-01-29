@@ -1,4 +1,4 @@
-#include "databasemanager.h"
+#include "../include/databasemanager.h"
 
 DatabaseManager::DatabaseManager(const QString &dbName) {
     db = QSqlDatabase::addDatabase("QSQLITE");

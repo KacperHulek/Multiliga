@@ -1,4 +1,4 @@
-#include "rejestracja.h"
+#include "../include/rejestracja.h"
 #include "ui_rejestracja.h"
 #include <QMessageBox>
 #include "bcrypt/BCrypt.hpp"

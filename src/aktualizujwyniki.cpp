@@ -1,6 +1,6 @@
-#include "aktualizujwyniki.h"
+#include "../include/aktualizujwyniki.h"
 #include "ui_aktualizujwyniki.h"
-#include "wpiszwynikmeczu.h"
+#include "../include/wpiszwynikmeczu.h"
 
 AktualizujWyniki::AktualizujWyniki(QWidget *parent, DatabaseManager *dbManager) :
     QDialog(parent),

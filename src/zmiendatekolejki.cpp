@@ -1,4 +1,4 @@
-#include "zmiendatekolejki.h"
+#include "../include/zmiendatekolejki.h"
 #include "ui_zmiendatekolejki.h"
 #include <QMessageBox>
 

@@ -1,4 +1,4 @@
-#include "spotkania.h"
+#include "../include/spotkania.h"
 #include "ui_spotkania.h"
 Spotkania::Spotkania(QWidget *parent, DatabaseManager *dbManager) :
     QDialog(parent),

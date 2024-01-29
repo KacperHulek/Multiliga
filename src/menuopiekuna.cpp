@@ -1,11 +1,11 @@
-#include "menuopiekuna.h"
+#include "../include/menuopiekuna.h"
 #include "ui_menuopiekuna.h"
-#include "spotkania.h"
-#include "edycjadanych.h"
-#include "ogloszenia.h"
-#include "zarzadzajligami.h"
-#include "aktualizujwyniki.h"
-#include "ranking.h"
+#include "../include/spotkania.h"
+#include "../include/edycjadanych.h"
+#include "../include/ogloszenia.h"
+#include "../include/zarzadzajligami.h"
+#include "../include/aktualizujwyniki.h"
+#include "../include/ranking.h"
 
 MenuOpiekuna::MenuOpiekuna(QWidget *parent,
 DatabaseManager *dbManager, MainWindow *mw) :
