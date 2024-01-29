@@ -29,7 +29,6 @@ AktualizujWyniki::~AktualizujWyniki()
 
 void AktualizujWyniki::on_dalejButton_clicked()
 {
-    //dalej queueID
     WpiszWynikMeczu *okno = new WpiszWynikMeczu(nullptr,queueID);
     okno->show();
 }
