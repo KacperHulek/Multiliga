@@ -16,7 +16,7 @@ public:
     void updateStuff();
     int getQueueID();
     int getPlayerID();
-    explicit EdytujLige(QWidget *parent = nullptr, int leagueID = 0);
+    explicit EdytujLige(QWidget *parent = nullptr, int leagueID = NULL);
     ~EdytujLige();
 
 private slots:

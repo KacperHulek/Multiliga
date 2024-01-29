@@ -19,8 +19,8 @@ EdytujLige::~EdytujLige()
 }
 
 void EdytujLige::updateStuff(){
-    queueID = 0;
-    playerID = 0;
+    //queueID = 0;
+    //playerID = 0;
     QDateTime queueDate;
     QSqlQuery helperQuery;
     helperQuery.prepare("SELECT * FROM [HelperView1] WHERE [LeagueID] = :LeagueID ORDER BY QueueDate");

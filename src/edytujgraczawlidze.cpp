@@ -66,7 +66,7 @@ void EdytujGraczaWLidze::on_zatwierdzButton_clicked()
 
 void EdytujGraczaWLidze::on_usunGraczaButton_clicked()
 {
-    int result = QMessageBox::question(nullptr, "Usuwanie gracza", "Czy napewno usunac gracza? Ta akcja jest nieodwracalna",
+    int result = QMessageBox::question(nullptr, "Usuwanie gracza", "Czy napewno usunac gracza?",
                                        QMessageBox::Yes | QMessageBox::No);
 
     if (result == QMessageBox::Yes) {

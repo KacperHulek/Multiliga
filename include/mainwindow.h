@@ -29,7 +29,6 @@ public:
 
 private slots:
     void on_zalogujButton_clicked();
-
     void on_zarejestrujButton_clicked();
 
 private:
