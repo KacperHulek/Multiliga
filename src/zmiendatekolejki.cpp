@@ -33,7 +33,6 @@ void ZmienDateKolejki::on_zatwierdzButton_clicked()
         }else{
             QMessageBox::information(nullptr, "Blad", "Blad");
         }
-
     }
 }
 

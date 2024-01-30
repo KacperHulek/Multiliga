@@ -29,12 +29,9 @@ void ZmianaHasla::on_zmienHasloButton_clicked()
         QMessageBox::information(nullptr, "Blad", "Niepoprawnie powtorzone nowe haslo!");
 
     else {
-        qDebug()<<"test1";
         QSqlQuery query;
-        qDebug()<<"test2";
         query.prepare("SELECT * FROM Users WHERE [ID] = :ID");
         query.bindValue(":ID", currentUserID);
-        qDebug()<<"test3";
         if(query.exec() && query.next()){
             QByteArray storedPassword = query.value("password").toByteArray();
             QString storedPasswordString = QString::fromUtf8(storedPassword);
