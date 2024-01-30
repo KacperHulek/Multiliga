@@ -28,6 +28,8 @@ private slots:
 
     void on_powrotButton_clicked();
 
+    void on_aktualizujPoziomyButton_clicked();
+
 private:
     Ui::EdytujLige *ui;
     QSqlQueryModel *model;

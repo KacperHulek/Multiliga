@@ -36,6 +36,7 @@ private:
     Role getRoleFromString(const QString& roleStr);
     QSqlDatabase db;
     int currentUserID;
+    void queueSmartUpdate();
 };
 
 #endif // MAINWINDOW_H

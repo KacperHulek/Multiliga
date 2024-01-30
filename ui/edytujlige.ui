@@ -58,6 +58,13 @@
          </property>
         </spacer>
        </item>
+       <item>
+        <widget class="QPushButton" name="aktualizujPoziomyButton">
+         <property name="text">
+          <string>Aktualizuj poziomy graczy</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>

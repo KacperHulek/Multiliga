@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     if (db.open()){
         qDebug() << "Connected to the database.";
+        queueSmartUpdate();
+
     } else {
         qDebug()<<"Error = "<< db.lastError();
     }
@@ -31,6 +33,48 @@ MainWindow::~MainWindow()
 
     if (db.isOpen()){
         db.close();
+    }
+}
+
+void MainWindow::queueSmartUpdate(){
+    QVector<int> leagues;
+    QSqlQuery query;
+    query.prepare("SELECT [ID] FROM [Leagues]");
+    if(query.exec()){
+        while(query.next()){
+            int leagueID = query.value(0).toInt();
+            leagues.append(leagueID);
+        }
+    }else{
+        qDebug()<<"Error: "<<query.lastError();
+    }
+
+    for(int i : leagues){
+        QSqlQuery queueQuery;
+        queueQuery.prepare("SELECT * FROM [Queues] WHERE [leagueID] = :leagueID ORDER BY [date] DESC");
+        queueQuery.bindValue(":leagueID",i);
+        if(queueQuery.exec()&&queueQuery.next()){
+            qDebug()<<queueQuery.value("date").toDate();
+            qDebug()<<QDate::currentDate();
+            if(queueQuery.value("date").toDate()<=QDate::currentDate()){
+                qDebug()<<"test";
+                //trzeba dodac nowa kolejke
+                int seasonID = queueQuery.value("seasonID").toInt();
+                QDate date = queueQuery.value("date").toDate();
+                QSqlQuery insertQueueQuery;
+                insertQueueQuery.prepare("INSERT INTO [Queues] ([leagueID], [seasonID], [date]) VALUES "
+                                         "(:leagueID, :seasonID, :date)");
+                insertQueueQuery.bindValue(":leagueID",i);
+                insertQueueQuery.bindValue(":seasonID",seasonID);
+                insertQueueQuery.bindValue(":date",date.addDays(7));
+                if(insertQueueQuery.exec()){
+                    //inserted new queue
+                }else{
+                    qDebug()<<"Error: "<<insertQueueQuery.lastError();
+                }
+
+            }
+        }
     }
 }
 
