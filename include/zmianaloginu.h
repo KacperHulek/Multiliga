@@ -12,7 +12,7 @@ class ZmianaLoginu : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZmianaLoginu(QWidget *parent = nullptr, int getCurrentUserID= NULL);
+    explicit ZmianaLoginu(QWidget *parent = nullptr, int getCurrentUserID= 0);
     ~ZmianaLoginu();
 
 private slots:

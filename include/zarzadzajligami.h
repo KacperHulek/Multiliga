@@ -13,7 +13,7 @@ class ZarzadzajLigami : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZarzadzajLigami(QWidget *parent = nullptr, int currentUserID = NULL);
+    explicit ZarzadzajLigami(QWidget *parent = nullptr, int currentUserID = 0);
     ~ZarzadzajLigami();
 
 private slots:

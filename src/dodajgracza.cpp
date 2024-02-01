@@ -18,7 +18,7 @@ DodajGracza::~DodajGracza()
     delete ui;
 }
 
-void DodajGracza::on_zatwierdzButton_clicked()
+void DodajGracza::on_zatwierdzButton_clicked()//wypadałoby zmienic nazwe obiektu tego przycisku na "dodaj"
 {
     QModelIndex currentIndex = ui->tableView->currentIndex();
     int playerID = model->record(currentIndex.row()).value("PlayerID").toInt();

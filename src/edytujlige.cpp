@@ -84,9 +84,6 @@ void EdytujLige::on_aktualizujPoziomyButton_clicked()
 
     QVector<int> leagues;
     QSqlQuery query;
-    int liczbaPoziomow = 3;
-    int iluAwansuje = 0;
-    int iluSpada = 0;
     query.prepare("SELECT [ID] FROM [Leagues]");
     if(query.exec()){
         while(query.next()){
@@ -187,6 +184,112 @@ void EdytujLige::on_aktualizujPoziomyButton_clicked()
             }
         }else{qDebug()<<"uError: "<<queueQuery.lastError();}
     }
+
+
+}
+
+void EdytujLige::on_wygenerujMeczeButton_clicked()
+{
+    //co jest potrzebne:
+    //ID najnowszej kolejki w danej lidze,
+    //lista graczy przypisanych do tej kolejki,
+    //nalezy pamietac o tym by nie duplikowac meczy
+    //gdy sie 2 razy kliknie ten przycisk (sprawdzenie czy
+    //dani gracze juz grali ze soba w ramach tej kolejki)
+    //gracze graja miedzy soba w tym samym poziomie
+    //trzeba dodac mozliwosc edycji meczow (w tym i dodawania, a zatem potrzebna kolejna klasa :)))))
+
+    QVector<int> leagues;
+    QSqlQuery query;
+    int queueID;
+    query.prepare("SELECT [ID] FROM [Leagues]");
+    if(query.exec()){
+        while(query.next()){
+            int leagueID = query.value(0).toInt();
+            leagues.append(leagueID);
+        }
+    }else{
+        qDebug()<<"Error: "<<query.lastError();
+    }
+
+    for(int l : leagues){
+        QDate dataKolejki;
+        QSqlQuery queueQuery;
+        queueQuery.prepare("SELECT [ID], [date] FROM [Queues] WHERE [leagueID] = :leagueID ORDER BY [date] DESC LIMIT 1");
+        queueQuery.bindValue(":leagueID",l);
+        if(queueQuery.exec()){
+            if(queueQuery.next()){
+                queueID = queueQuery.value("ID").toInt();
+                dataKolejki = queueQuery.value("date").toDate();
+            }
+        }else{qDebug()<<"Error: "<<queueQuery.lastError();}
+
+
+
+        for(int i = liczbaPoziomow;i>0;i--){
+            QVector<int> playersID;
+            qDebug()<<playersID.size();
+            QVector<int> meczeA;
+            QVector<int> meczeB;
+            QSqlQuery playersQuery;
+            playersQuery.prepare("SELECT [ID] FROM [Players] WHERE [queueID] = :queueID AND [level] = :level");
+            playersQuery.bindValue(":queueID",queueID);
+            playersQuery.bindValue(":level",i);
+            if(playersQuery.exec()){
+                //tyle ile jest graczy w kolejce, tyle meczy powinno być przypisane do poszczegolnego gracza
+                while(playersQuery.next()){
+                    playersID.append(playersQuery.value("ID").toInt());
+                }
+
+                //mamy liste graczy w danej kolejce na dany poziom. Teraz tworzymy liste meczy
+                if(playersID.size()>1){
+                    for(int j = 0; j<playersID.size()-1;j++){
+                        for(int k = j+1; k<playersID.size();k++){
+                            meczeA.append(playersID.value(j));
+                            meczeB.append(playersID.value(k));
+                        }
+                    }
+                    for(int j = 0; j<meczeA.size();j++){
+                        //to teraz sprawdzamy czy juz nie ma takich meczy miedzy tymi graczami, a nastepnie insertujemy
+                        int graczA = meczeA.value(j);
+                        int graczB = meczeB.value(j);
+                        QSqlQuery matchesQuery;
+                        matchesQuery.prepare("SELECT * FROM [Matches] WHERE [queueID] = :queueID "
+                                             "AND (([playeraID] = :graczA AND [playerbID] = :graczB) "
+                                             "OR ([playeraID] = :graczB AND [playerbID] = :graczA)) ");
+                        matchesQuery.bindValue(":queueID",queueID);
+                        matchesQuery.bindValue(":graczA",graczA);
+                        matchesQuery.bindValue(":graczB",graczB);
+
+                        if(matchesQuery.exec()){
+                            if(!matchesQuery.next()){
+                                QSqlQuery insertQuery;
+                                insertQuery.prepare("INSERT INTO [Matches] (playeraID, playerbID, queueID, courtID, date) "
+                                                    "VALUES (:playeraID, :playerbID, :queueID, :courtID, :date)");
+                                insertQuery.bindValue(":playeraID",graczA);
+                                insertQuery.bindValue(":playerbID",graczB);
+                                insertQuery.bindValue(":queueID",queueID);
+                                insertQuery.bindValue(":courtID",1); // AKTUALNIE NA JEDNYM BOISKU SIE GRA
+
+                                QDateTime dataMeczu;
+                                dataMeczu.setDate(dataKolejki);
+                                QTime czas;
+                                czas.setHMS(12,0,0,0);
+                                dataMeczu.setTime(czas.addSecs(j*1800));
+                                insertQuery.bindValue(":date",dataMeczu.toString("yyyy-MM-dd HH:mm:ss"));
+                                if(!insertQuery.exec())
+                                    qDebug()<<"Error: "<<insertQuery.lastError();
+                            }
+                        }else{qDebug()<<"Error: "<<matchesQuery.lastError();}
+                    }
+                }
+            }else{qDebug()<<"Error: "<<playersQuery.lastError();}
+        }
+
+
+    }
+
+
 
 
 }

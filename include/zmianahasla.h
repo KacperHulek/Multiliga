@@ -11,7 +11,7 @@ class ZmianaHasla : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZmianaHasla(QWidget *parent = nullptr, int currentUserID = NULL);
+    explicit ZmianaHasla(QWidget *parent = nullptr, int currentUserID = 0);
     ~ZmianaHasla();
 
 private slots:

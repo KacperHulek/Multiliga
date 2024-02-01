@@ -40,7 +40,7 @@
        <item>
         <widget class="QPushButton" name="zatwierdzButton">
          <property name="text">
-          <string>Zatwierdź</string>
+          <string>Dodaj</string>
          </property>
         </widget>
        </item>

@@ -37,6 +37,7 @@ private:
     QSqlDatabase db;
     int currentUserID;
     void queueSmartUpdate();
+    void prepareQueuePayments(int previousQueueID, int newQueueID);
 };
 
 #endif // MAINWINDOW_H

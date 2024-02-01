@@ -36,6 +36,27 @@ MainWindow::~MainWindow()
     }
 }
 
+void MainWindow::prepareQueuePayments(int previousQueueID, int newQueueID){
+    //na podstawie listy graczy z poprzedniej kolejki
+    //stworzyc wpis queue payments dla kazdego.
+    // Czyli musi się uruchamiac wtedy gdy queueSmartUpdate().
+
+    QSqlQuery playersQuery;
+    QSqlQuery insertQuery;
+    insertQuery.prepare("INSERT INTO [QueuePayments] ([playerID], [queueID], [paid]) VALUES "
+                        "(:playerID, :newQueueID, 0)");
+    insertQuery.bindValue(":newQueueID",newQueueID);
+    playersQuery.prepare("SELECT * FROM [Players] WHERE [queueID] = :queueID");
+    playersQuery.bindValue(":queueID",previousQueueID);
+    if(playersQuery.exec()){
+        while(playersQuery.next()){
+            insertQuery.bindValue(":playerID",playersQuery.value("ID").toInt());
+            if(insertQuery.exec()){}
+            else{qDebug()<<insertQuery.lastError();}
+        }
+    }else{qDebug()<<"Error: "<<playersQuery.lastError();}
+}
+
 void MainWindow::queueSmartUpdate(){
     QVector<int> leagues;
     QSqlQuery query;
@@ -54,10 +75,7 @@ void MainWindow::queueSmartUpdate(){
         queueQuery.prepare("SELECT * FROM [Queues] WHERE [leagueID] = :leagueID ORDER BY [date] DESC");
         queueQuery.bindValue(":leagueID",i);
         if(queueQuery.exec()&&queueQuery.next()){
-            qDebug()<<queueQuery.value("date").toDate();
-            qDebug()<<QDate::currentDate();
             if(queueQuery.value("date").toDate()<=QDate::currentDate()){
-                qDebug()<<"test";
                 //trzeba dodac nowa kolejke
                 int seasonID = queueQuery.value("seasonID").toInt();
                 QDate date = queueQuery.value("date").toDate();
@@ -68,6 +86,7 @@ void MainWindow::queueSmartUpdate(){
                 insertQueueQuery.bindValue(":seasonID",seasonID);
                 insertQueueQuery.bindValue(":date",date.addDays(7));
                 if(insertQueueQuery.exec()){
+                    prepareQueuePayments(queueQuery.value("ID").toInt(),insertQueueQuery.lastInsertId().toInt());
                     //inserted new queue
                 }else{
                     qDebug()<<"Error: "<<insertQueueQuery.lastError();

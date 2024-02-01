@@ -12,7 +12,7 @@ class DodajOgloszenie : public QDialog
     Q_OBJECT
 
 public:
-    explicit DodajOgloszenie(QWidget *parent = nullptr, QSqlQueryModel *model=nullptr, int currentUserID = NULL);
+    explicit DodajOgloszenie(QWidget *parent = nullptr, QSqlQueryModel *model=nullptr, int currentUserID = 0);
     ~DodajOgloszenie();
 
 private slots:

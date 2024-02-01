@@ -39,7 +39,7 @@ void MenuOpiekuna::showMainWindow()
 
 void MenuOpiekuna::on_wylogujButton_clicked()
 {
-    mw->setCurrentUserID(NULL);
+    mw->setCurrentUserID(0);
     this->close();
     mw->show();
 }

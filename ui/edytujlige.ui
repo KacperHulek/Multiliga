@@ -65,6 +65,13 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="wygenerujMeczeButton">
+         <property name="text">
+          <string>Wygeneruj mecze dla danej kolejki</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>

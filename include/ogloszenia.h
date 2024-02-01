@@ -13,7 +13,7 @@ class Ogloszenia : public QDialog
     Q_OBJECT
 
 public:
-    explicit Ogloszenia(QWidget *parent = nullptr, int currentUserID = NULL);
+    explicit Ogloszenia(QWidget *parent = nullptr, int currentUserID = 0);
     ~Ogloszenia();
 
 private slots:

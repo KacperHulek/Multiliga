@@ -16,7 +16,7 @@ public:
     void updateStuff();
     int getQueueID();
     int getPlayerID();
-    explicit EdytujLige(QWidget *parent = nullptr, int leagueID = NULL);
+    explicit EdytujLige(QWidget *parent = nullptr, int leagueID = 0);
     ~EdytujLige();
 
 private slots:
@@ -30,12 +30,17 @@ private slots:
 
     void on_aktualizujPoziomyButton_clicked();
 
+    void on_wygenerujMeczeButton_clicked();
+
 private:
     Ui::EdytujLige *ui;
     QSqlQueryModel *model;
     int leagueID;
     int queueID;
     int playerID;
+    int liczbaPoziomow = 3;
+    int iluAwansuje = 0;
+    int iluSpada = 0;
 };
 
 #endif // EDYTUJLIGE_H
