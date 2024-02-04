@@ -6,7 +6,6 @@
 #include "../include/zarzadzajligami.h"
 #include "../include/aktualizujwyniki.h"
 #include "../include/ranking.h"
-
 MenuOpiekuna::MenuOpiekuna(QWidget *parent, MainWindow *mw) :
     QWidget(parent),
     ui(new Ui::MenuOpiekuna),

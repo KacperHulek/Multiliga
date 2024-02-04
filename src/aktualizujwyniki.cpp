@@ -19,7 +19,6 @@ AktualizujWyniki::AktualizujWyniki(QWidget *parent) :
     ui->listaKolejekView->setModel(model2);
 
     queueID = model2->record(0).value("ID").toInt();
-
 }
 
 AktualizujWyniki::~AktualizujWyniki()
@@ -51,4 +50,3 @@ void AktualizujWyniki::on_listaKolejekView_clicked(const QModelIndex &index)
     QModelIndex currentIndex = index;
     queueID = model2->record(currentIndex.row()).value("ID").toInt();
 }
-

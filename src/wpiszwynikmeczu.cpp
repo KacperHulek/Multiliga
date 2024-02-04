@@ -11,7 +11,6 @@ WpiszWynikMeczu::WpiszWynikMeczu(QWidget *parent, int queueID) :
     this->model = new QSqlQueryModel();
     model->setQuery("SELECT * FROM [WpiszWynik] WHERE queueID = " + QString::number(queueID));
     ui->tableView->setModel(model);
-
 }
 
 WpiszWynikMeczu::~WpiszWynikMeczu()
@@ -37,7 +36,6 @@ void WpiszWynikMeczu::on_wpiszWynikButton_clicked()
         qDebug()<<query.lastError();
     }
 }
-
 
 void WpiszWynikMeczu::on_powrotButton_clicked()
 {

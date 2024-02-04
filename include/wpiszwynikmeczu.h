@@ -25,6 +25,7 @@ private:
     int queueID;
     QSqlQueryModel *model;
 
+
 };
 
 #endif // WPISZWYNIKMECZU_H

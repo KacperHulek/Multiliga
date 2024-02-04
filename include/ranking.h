@@ -23,6 +23,7 @@ private:
     QSqlQueryModel  *listModel;
     QSqlQueryModel  *tableModel;
     int leagueID;
+    void aktualizujWynikiGraczy();
 };
 
 #endif // RANKING_H
