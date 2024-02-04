@@ -7,7 +7,7 @@ Spotkania::Spotkania(QWidget *parent) :
     ui->setupUi(this);
 
     this->model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM [HarmonogramSpotkan]");
+    model->setQuery("SELECT * FROM [HarmonogramSpotkan2]");
     ui->tabelaSpotkanView->setModel(model);
 }
 

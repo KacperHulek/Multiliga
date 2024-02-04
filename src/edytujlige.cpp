@@ -23,7 +23,7 @@ void EdytujLige::updateStuff(){
     //playerID = 0;
     QDateTime queueDate;
     QSqlQuery helperQuery;
-    helperQuery.prepare("SELECT * FROM [HelperView1] WHERE [LeagueID] = :LeagueID ORDER BY QueueDate DESC");
+    helperQuery.prepare("SELECT * FROM [HelperView2] WHERE [LeagueID] = :LeagueID ORDER BY QueueDate DESC");
     helperQuery.bindValue(":LeagueID",leagueID);
     if(helperQuery.exec()&&helperQuery.next()){
         queueID = helperQuery.value("QueueID").toInt();
@@ -31,7 +31,6 @@ void EdytujLige::updateStuff(){
         ui->dateTimeEdit->setDateTime(queueDate);
     }
     this->model = new QSqlQueryModel();
-    qDebug()<<QString::number(queueID);
     model->setQuery("SELECT * FROM [EdycjaLigi] WHERE [QueueID] = " + QString::number(queueID) + " ORDER BY Poziom");
     ui->tableView->setModel(model);
 }
@@ -40,6 +39,9 @@ int EdytujLige::getQueueID(){
 }
 int EdytujLige::getPlayerID(){
     return playerID;
+}
+int EdytujLige::getLeagueID(){
+    return leagueID;
 }
 
 void EdytujLige::on_zmienDateKolejkiButton_clicked()
@@ -137,7 +139,6 @@ void EdytujLige::on_aktualizujPoziomyButton_clicked()
                     else
                         qDebug()<<upQuery.lastError();
                 }
-                qDebug()<<previousQueueID;
                 QVector<int> demote;
                 QVector<int> promote;
                 for(int i = liczbaPoziomow; i>0; i--){
@@ -158,7 +159,6 @@ void EdytujLige::on_aktualizujPoziomyButton_clicked()
                             demote.append(query.value("ID").toInt());
                     }else if(!query.exec()){qDebug()<<"wError: "<<query.lastError();}
                 }
-                qDebug()<<newQueueID;
                 QSqlQuery helperQuery;
                 helperQuery.prepare("SELECT * FROM Players WHERE queueID = :queueID");
                 helperQuery.bindValue(":queueID",previousQueueID);
@@ -228,7 +228,6 @@ void EdytujLige::on_wygenerujMeczeButton_clicked()
 
         for(int i = liczbaPoziomow;i>0;i--){
             QVector<int> playersID;
-            qDebug()<<playersID.size();
             QVector<int> meczeA;
             QVector<int> meczeB;
             QSqlQuery playersQuery;
@@ -288,9 +287,5 @@ void EdytujLige::on_wygenerujMeczeButton_clicked()
 
 
     }
-
-
-
-
 }
 

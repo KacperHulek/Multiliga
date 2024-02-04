@@ -26,6 +26,7 @@ private:
     Ui::DodajGracza *ui;
     EdytujLige *el;
     QSqlQueryModel *model;
+    void aktualizujQueuePayments(int playerID, int queueID);
 };
 
 #endif // DODAJGRACZA_H

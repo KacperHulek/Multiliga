@@ -16,6 +16,7 @@ public:
     void updateStuff();
     int getQueueID();
     int getPlayerID();
+    int getLeagueID();
     explicit EdytujLige(QWidget *parent = nullptr, int leagueID = 0);
     ~EdytujLige();
 
